@@ -1,3 +1,4 @@
+const apiConfig = require('./api.config')
 module.exports = {
   /*
   ** Headers of the page
@@ -34,6 +35,28 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    babel: {
+      presets: ['es2015', 'stage-2'],
+      plugins: [
+        'transform-async-to-generator',
+        'transform-runtime'
+      ],
+      comments: true
+    },
+    extend (webpackConfig, { dev, isClient, isServer }) {
+      webpackConfig.module.rules.push({
+        test: /\.scss$/,
+        loader: 'vue-style-loader!css-loader!sass-loader'
+      })
     }
-  }
+
+  },
+  css: [
+    // /bootstrap/dist/css/bootstrap.css
+    // 'bootstrap/dist/css/bootstrap.min.css',
+    'bootstrap/dist/css/bootstrap.css'
+    // { src: '~assets/sass/app.scss', lang: 'sass' }
+    // {src: 'bootstrap', lang: 'css'}
+  ]
 }

@@ -1,22 +1,32 @@
 <template>
   <div>
+  <header-view></header-view>
+  <nav-view></nav-view>
+    <my-header/>
+    <!-- <nuxt></nuxt> -->
     <nuxt/>
-    <my-footer/>
+    <!-- <my-footer/> -->
   </div>
 </template>
 
 <script>
 import MyFooter from '~components/Footer.vue'
+import MyHeader from '~components/Header.vue'
+import {Nav,Header} from '~components/layout'
+
 
 export default {
   components: {
-    MyFooter
+    MyFooter,
+    MyHeader,
+    NavView: Nav,
+    HeaderView: Header
   }
 }
 </script>
 
 <style>
-.container
+/*.container
 {
   margin: 0;
   width: 100%;
@@ -48,5 +58,5 @@ export default {
   font-weight: 300;
   font-size: 2.5em;
   margin: 0;
-}
+}*/
 </style>
