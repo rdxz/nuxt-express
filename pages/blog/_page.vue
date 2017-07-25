@@ -28,7 +28,7 @@ export default {
     }
   },
   asyncData ({ params, error }) {
-    // console.log(params.page);
+    console.log(params.page);
     if (params.page == undefined) {
       var params = {page: 1}
     }
