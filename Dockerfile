@@ -17,4 +17,4 @@ EXPOSE 3000
 RUN npm install
 RUN ./node_modules/.bin/nuxt build
 
-CMD ["node", "./build/main.js"]
+#CMD ["node", "./build/main.js"]
