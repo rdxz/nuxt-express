@@ -1,11 +1,17 @@
-FROM banian/node
+FROM mhart/alpine-node:7
+MAINTAINER briangonzalez
 
-ENV NODE_ENV=production
-CMD npm start
+# Create app directory
+RUN mkdir -p /app
+COPY . /app
+
+# Expose the app port
 EXPOSE 3000
 
-COPY package.json yarn.lock /usr/src/app/
-RUN yarn install
+# Copy files.
+ONBUILD COPY . /app
+ONBUILD WORKDIR /app
+ONBUILD RUN npm install
+ONBUILD RUN ./node_modules/.bin/nuxt build
 
-COPY . /usr/src/app
-RUN npm run build
+CMD ["/app/run.sh"]
