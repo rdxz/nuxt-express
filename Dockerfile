@@ -15,6 +15,6 @@ EXPOSE 3000
 #ONBUILD RUN ./node_modules/.bin/nuxt build
 
 RUN npm install
-RUN ./node_modules/.bin/nuxt build
+RUN /app/node_modules/.bin/nuxt build
 
 CMD ["/app/run.sh"]
