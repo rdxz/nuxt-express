@@ -9,9 +9,12 @@ COPY . /app
 EXPOSE 3000
 
 # Copy files.
-ONBUILD COPY . /app
-ONBUILD WORKDIR /app
-ONBUILD RUN npm install
-ONBUILD RUN ./node_modules/.bin/nuxt build
+#ONBUILD COPY . /app
+#ONBUILD WORKDIR /app
+#ONBUILD RUN npm install
+#ONBUILD RUN ./node_modules/.bin/nuxt build
+
+RUN npm install
+RUN ./node_modules/.bin/nuxt build
 
 CMD ["/app/run.sh"]
