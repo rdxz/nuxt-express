@@ -17,4 +17,4 @@ EXPOSE 3000
 RUN npm install
 RUN npm run build
 
-#CMD ["node", "./build/main.js"]
+CMD ["node", "./build/main.js"]
