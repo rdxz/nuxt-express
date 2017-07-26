@@ -4,7 +4,7 @@ MAINTAINER briangonzalez
 # Create app directory
 RUN mkdir -p /app
 COPY . /app
-
+WORKDIR /app
 # Expose the app port
 EXPOSE 3000
 
@@ -15,6 +15,6 @@ EXPOSE 3000
 #ONBUILD RUN ./node_modules/.bin/nuxt build
 
 RUN npm install
-RUN /app/node_modules/.bin/nuxt build
+RUN ./node_modules/.bin/nuxt build
 
 CMD ["/app/run.sh"]
