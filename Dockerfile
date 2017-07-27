@@ -1,20 +1,21 @@
-FROM mhart/alpine-node:7
-MAINTAINER briangonzalez
+FROM node:7.8.0-alpine
 
 # Create app directory
-RUN mkdir -p /app
-COPY . /app
-WORKDIR /app
-# Expose the app port
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+RUN apk update && apk upgrade && apk add git
+
+ONBUILD COPY . /usr/src/app/
+ONBUILD RUN npm install
+
+# Build app
+ONBUILD RUN npm run build
+
+ENV HOST 0.0.0.0
 EXPOSE 3000
 
-# Copy files.
-#ONBUILD COPY . /app
-#ONBUILD WORKDIR /app
-#ONBUILD RUN npm install
-#ONBUILD RUN ./node_modules/.bin/nuxt build
+# start command
+CMD [ "npm", "start" ]
 
-RUN npm install
-RUN npm run build
-
-CMD ["node", "./build/main.js"]
